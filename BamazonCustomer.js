@@ -24,32 +24,23 @@ con.connect(function(err) {
 con.query('SELECT * FROM Products', function(err, res) {
 	for (var i=0; i < res.length; i++) {
 
-		var currentStock = [];
-		currentStock.push("" + result[i].StockQuantity);
-
 		console.log('-------------------------------------------' + '\n' + 'Product: ' + res[i].ProductName + '\n' + 'Price: $' + res[i].Price 
 			+ '\n' + 'Item number: ' + res[i].ItemID + '\n' + '-------------------------------------------');
-		}
-
-		console.log("Current Stock: " + currentStock);
 	}
 
+	stockUpdate();
+})
+
+var stockUpdate = function() {
 	inquirer.prompt([{
 		type: "input",
-		name: "Item",
+		name: "item",
 		message: "Please type the Item number of the Product you would like to buy.",
-	},{
-		type: "input",
-		name: "Amount",
-		message: "How many would you like?",
-	},
-		]).then (function(choice) {
-			var itemChosen = choice.Item;
-			var amountChosen = choice.Amount;
+	},]).then (function(choice) {
+			var item = { ItemID: item.choice }
+			console.log("You have chosen: " + item);
+		});
 
-			var newStock = currentStock - amountChosen;
-			console.log('New Stock: ' + newStock);
-	});
-});
+};
 
 
