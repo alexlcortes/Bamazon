@@ -17,5 +17,11 @@ CREATE TABLE Products (
     constraint PRIMARY KEY (ItemID)
 );
 
+ALTER TABLE Products
 
+ADD COLUMN Price float (6, 2)
+
+UPDATE Products
+SET Price=1.99
+WHERE ProductName='Drinking Glass';
     
