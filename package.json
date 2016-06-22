@@ -1,0 +1,24 @@
+{
+  "name": "bamazon",
+  "version": "1.0.0",
+  "description": "it is like amazon",
+  "main": "BamazonCustomer.js",
+  "dependencies": {
+    "mysql": "^2.11.1",
+    "inquirer": "^1.0.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alexlcortes/Bamazon.git"
+  },
+  "author": "Alejandro Cortes",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alexlcortes/Bamazon/issues"
+  },
+  "homepage": "https://github.com/alexlcortes/Bamazon#readme"
+}
