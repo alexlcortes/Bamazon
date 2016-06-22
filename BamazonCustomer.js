@@ -54,10 +54,23 @@ var buyerChoice = function(choice, stock, price) {
 	},]).then (function(stuff) {
 
 		var itemChosen = stuff.item - 1;
+		var totalAmount = stuff.amount * price[itemChosen];
+
+		// price[itemChosen] comes out as undefine
+		// console.log("test: " + price[itemChosen]);
 
 		console.log("Item ID Chosen: " + choice[itemChosen]);
 		console.log("Available: " + stock[itemChosen]);
 		console.log("Wanted: " + stuff.amount);
+		console.log("-------------------------------------------" + '\n');
+
+		
+
+		stuff.amount = stock[itemChosen] - stuff.amount;
+
+		// console.log("stuff.amount: " + stuff.amount);
+		// no reason to print this yet since it doesn't work
+		// console.log("Your Total is: $" + totalAmount);
 
 })};
 
