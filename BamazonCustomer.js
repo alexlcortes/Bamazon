@@ -18,29 +18,47 @@ con.connect(function(err) {
     console.log('Connection established to Bamazon Database.');
     console.log("-------------------------------------------");
     console.log("The things I have for sale...");
+    console.log("-------------------------------------------");
 
 });
+
+var userChoice = [];
+var choiceStock = [];
+var choicePrice = [];
 
 con.query('SELECT * FROM Products', function(err, res) {
 	for (var i=0; i < res.length; i++) {
 
-		console.log('-------------------------------------------' + '\n' + 'Product: ' + res[i].ProductName + '\n' + 'Price: $' + res[i].Price 
+		console.log('Product: ' + res[i].ProductName + '\n' + 'Price: $' + res[i].Price 
 			+ '\n' + 'Item number: ' + res[i].ItemID + '\n' + '-------------------------------------------');
+
+		userChoice.push("" + res[i].ItemID);
+		choiceStock.push("" + res[i].StockQuantity);
+		choicePrice.push("" + res[i.Price]);
 	}
 
-	stockUpdate();
+	buyerChoice(userChoice, choiceStock, choicePrice);
 })
 
-var stockUpdate = function() {
+var buyerChoice = function(choice, stock, price) {
 	inquirer.prompt([{
 		type: "input",
 		name: "item",
 		message: "Please type the Item number of the Product you would like to buy.",
-	},]).then (function(choice) {
-			var item = { ItemID: item.choice }
-			console.log("You have chosen: " + item);
-		});
 
-};
+	}, {
+		type: "input",
+		name: "amount",
+		message: "How many would you like to purchase?"
+
+	},]).then (function(stuff) {
+
+		var itemChosen = stuff.item - 1;
+
+		console.log("Item ID Chosen: " + choice[itemChosen]);
+		console.log("Available: " + stock[itemChosen]);
+		console.log("Wanted: " + stuff.amount);
+
+})};
 
 
