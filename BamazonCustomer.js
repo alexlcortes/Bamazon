@@ -72,6 +72,22 @@ var buyerChoice = function(choice, stock, price) {
 		// no reason to print this yet since it doesn't work
 		// console.log("Your Total is: $" + totalAmount);
 
-})};
+		transaction(stuff);
+
+})}
+
+	var transaction = function(stuff) {
+
+		var newStock = { StockQuantity: parseInt(stuff.amount) };
+
+		var itemInfo = { ItemID: stuff.item };
+
+		con.query('update products set ? where ?', [newStock, itemInfo], function(err, res) {
+			if (err) throw err;
+			console.log("Your purchase is complete");
+			con.end();
+		});
+
+	};
 
 
